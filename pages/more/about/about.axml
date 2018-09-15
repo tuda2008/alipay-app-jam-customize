@@ -1,0 +1,14 @@
+<view class="container">
+    <view class="header">
+        <view>
+            <image class="logo" src="/images/start/logo.png"></image>
+        </view>
+    </view>
+    <view class="line"></view>
+    <block a:for="{{reasons}}">
+        <view class="my-item">
+            <text>{{item.reason}}</text>
+        </view>
+    </block>
+    <view class="line"></view>
+</view>

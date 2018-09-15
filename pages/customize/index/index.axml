@@ -1,0 +1,32 @@
+<view class="page">
+    <view class="page__bd">
+        <swiper class="banner" indicator-dots="{{indicatorDots}}" vertical="{{vertical}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">
+          <block a:for="{{carousels}}">
+            <swiper-item key="{{item.id}}">
+              <image src="{{item.url}}" class="slide-image" />
+            </swiper-item>
+          </block>
+        </swiper>
+
+        <view class="product">
+            <view class="menu">
+                <view class="menu-title-item">
+                    <text class="menu-title-item-text">专业定制</text>
+                </view>
+            </view>
+            <view class="product-box">
+                <block a:for="{{customize}}" a:for-item="custom">
+                    <view class="product-detail" data-id="{{custom.id}}" onTap="goToCustomizeProduct">
+                        <image class="image" src="{{custom.image}}"></image>
+                        <view class="title"><text>{{custom.title}}</text></view>
+                        <view class="intro"><text>{{custom.intro}}</text></view>
+                    </view>
+                </block>
+            </view>
+        </view>
+
+        <view>
+            <button class="call" onTap="callPhone">立即咨询</button>
+        </view>
+    </view>
+</view>

@@ -1,0 +1,51 @@
+{
+  "pages": [
+      "pages/start/start",
+      "pages/home/index",
+      "pages/customize/index/index",
+      "pages/customize/show/show",
+      "pages/partners/index/index",
+      "pages/more/index/index",
+      "pages/more/about/about",
+      "pages/more/map/map"
+  ],
+  "window": {
+    "backgroundTextStyle": "dark",
+    "titleBarColor": "#1bd1a5",
+    "navigationBarTitleText": "佳安美定制",
+    "navigationBarTextStyle": "white"
+  },
+  "tabBar": {
+    "color": "#bfbfbf",
+    "selectedColor": "#2aa515",
+    "borderStyle": "black",
+    "backgroundColor": "#ffffff",
+    "items": [
+    {
+      "pagePath": "pages/home/index",
+      "icon": "images/tabbar/home.png",
+      "activeIcon": "images/tabbar/home_selected.png",
+      "name": "首页"
+    },
+    {
+      "pagePath": "pages/customize/index/index",
+      "icon": "images/tabbar/customize.png",
+      "activeIcon": "images/tabbar/customize_selected.png",
+      "name": "定制"
+    },
+    {
+      "pagePath": "pages/more/index/index",
+      "icon": "images/tabbar/more.png",
+      "activeIcon": "images/tabbar/more_selected.png",
+      "name": "更多"
+    }
+    ]
+  },
+  "networkTimeout": {
+    "request": 10000,
+    "connectSocket": 10000,
+    "uploadFile": 10000,
+    "downloadFile": 10000
+  },
+  "debug": true
+}

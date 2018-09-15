@@ -1,0 +1,99 @@
+var circularJSON = function(){};
+  
+circularJSON._rxp = /(\w)*\[(?:(\w*)=)?'?([\w\s]*)'?\]/;
+circularJSON._key = '#';
+
+circularJSON.AOeach = function(data, funct){
+  var i, s, ret = data;
+  if(data instanceof Array){
+    ret = [];
+    for(i = 0 ; i < data.length ; i++){
+      ret[i] = funct(data[i], i, true);
+    }
+  } else if(data instanceof Object){
+    ret = {};
+    for(s in data){
+      ret[s] = funct(data[s], s, false)
+    }
+  } 
+  return ret; 
+}
+
+circularJSON.recursiveEach = function(obj, funct, maxdepth, stack){
+  var s, i;
+  maxdepth = maxdepth === undefined ? 16 : maxdepth;
+  stack = stack === undefined ? [] : stack.slice(0); 
+  stack.push(obj);
+
+  var ret = funct(obj, stack);
+
+  if(!circularJSON.isPrimitive(ret) && maxdepth > 0){
+    ret = circularJSON.AOeach(ret, function(prop, index){
+      return circularJSON.recursiveEach(prop, funct, maxdepth - 1, stack);
+    });
+  }
+
+  return ret;
+}
+
+circularJSON.isPrimitive = function(obj){
+  return typeof obj === 'string' || typeof obj === 'number'
+}
+
+circularJSON._flatten = function(prop, stack){
+  if(stack.length > 3){
+    var s, t, i, ref, root = stack[0];
+    for(s in root){
+      circularJSON.AOeach(root[s], function(obj, index, isArray){
+        if(obj === prop){
+          if(root[s] instanceof Array){
+            console.log("arr", root[s][index]);
+            var id = root[s][index].id;
+            if(id === undefined){
+              prop = circularJSON._key + '' + s + '['  + index + ']';    
+            } else {
+              var cit = typeof id === 'string' ? "'" : '';
+              prop = circularJSON._key + '' + s + '[id=' + cit + id + cit + ']';  
+            }
+          } else {
+            prop = circularJSON._key + '' + s + '[\''  + index + '\']';  
+          }
+          
+        }
+      });
+    }
+  }
+  return prop;
+}
+
+circularJSON._unflatten = function(prop, stack){
+  if(typeof prop === 'string' && prop.indexOf(circularJSON._key) === 0){
+    var prop = prop.slice(circularJSON._key.length);
+    var match = prop.match(circularJSON._rxp);    
+    var node = stack[0][match[1]];
+    if(match[2] === undefined){
+      prop = node[match[3]]    
+    } else {
+      for(var i = 0 ; i < node.length ; i++){
+        if(node[i][match[2]] === match[3]){
+          prop = node[i];
+          break;
+        }
+      }
+    }
+    
+  }
+  return prop;
+}
+
+circularJSON.stringify = function(obj, replacer, space){
+  var data = circularJSON.recursiveEach(obj, circularJSON._flatten);
+  return JSON.stringify(data, replacer, space);
+}
+
+circularJSON.parse = function(json, reviver){
+  var data = JSON.parse(json, reviver);
+  return circularJSON.recursiveEach(data, circularJSON._unflatten);
+}
+
+module.exports = circularJSON

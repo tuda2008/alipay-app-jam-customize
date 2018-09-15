@@ -1,0 +1,27 @@
+<view class="container">
+    <view class="header">
+        <view>
+            <image class="logo" src="/images/start/logo.png"></image>
+        </view>
+    </view>
+
+    <view class="line"></view>
+    <view class="my-item" onTap="gotoAbout">
+        <button class="menu">我们的优势</button>
+    </view>
+    <view class="my-item" onTap="callPhone">
+        <button class="menu">商务合作</button>
+    </view>
+    <view class="my-item" onTap="gotoFactory">
+        <button class="menu">前往工作室</button>
+    </view>
+    <view class="my-item">
+        <button class="menu" open-type="share">分享给好友</button>
+    </view>
+
+    <view class="line"></view>
+    <view class="advise">营业时间 周一到周六 8:30---18:00</view>
+    <view class="line"></view>
+    <view class="advise">APP、小程序、公众号、网站定制请微信联系letu86</view>
+    <view class="line"></view>
+</view>

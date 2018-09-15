@@ -1,0 +1,44 @@
+<import src="../../../wxmlify/wxmlify.axml" />
+
+<view class="page">
+    <view class="page__bd">
+        <swiper class="banner" indicator-dots="{{indicatorDots}}" vertical="{{vertical}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">
+          <block a:for="{{customize.images}}">
+            <swiper-item key="{{item.id}}">
+              <image src="{{item.url}}" class="slide-image" />
+            </swiper-item>
+          </block>
+        </swiper>
+
+        <view class="section section_gap">
+            <view class="sub-title">定制详情</view>
+            <view>
+                <text class="detail-title">{{customize.title}}</text>
+                <text class="detail-intro">{{customize.intro}}</text>
+            </view>
+            <template is="wxmlify" data="{{nodes: description}}"></template>
+        </view>
+
+        <view class="product">
+            <view class="menu" onTap="goToCustomize">
+                <view class="menu-title-item">
+                    <text class="menu-title-item-text">热门定制</text>
+                </view>
+                <image class="menu-title-item-arrow" src="/images/home/more_circle.png" />
+            </view>
+            <view class="product-box">
+                <block a:for="{{customize_products}}" a:for-item="custom">
+                    <view class="product-detail" data-id="{{custom.id}}" onTap="goToCustomizeProduct">
+                        <image class="image" src="{{custom.image}}"></image>
+                        <view class="title"><text>{{custom.title}}</text></view>
+                        <view class="intro"><text>{{custom.intro}}</text></view>
+                    </view>
+                </block>
+            </view>
+        </view>
+
+        <view>
+            <button class="call" onTap="callPhone">立即咨询</button>
+        </view>
+    </view>
+</view>

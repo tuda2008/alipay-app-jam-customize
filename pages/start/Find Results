@@ -1,0 +1,31 @@
+Searching 406 files for "class="call" " (regex)
+
+/Users/letu/Myapp/railsapp/new/alipay-app-jam-customize/pages/customize/index/index.axml:
+   32  
+   33          <view>
+   34:             <button class="call" onTap="callPhone">立即咨询</button>
+   35          </view>
+   36      </view>
+
+/Users/letu/Myapp/railsapp/new/alipay-app-jam-customize/pages/customize/show/show.axml:
+   44  
+   45          <view>
+   46:             <button class="call" onTap="callPhone">立即咨询</button>
+   47          </view>
+   48      </view>
+
+/Users/letu/Myapp/railsapp/new/alipay-app-jam-customize/pages/home/index.axml:
+   50              </view>
+   51              <view>
+   52:                 <button class="call" onTap="callPhone">立即咨询</button>
+   53              </view>
+   54          </view>
+
+/Users/letu/Myapp/railsapp/new/alipay-app-jam-customize/pages/partners/index/index.axml:
+   26              </view>
+   27              <view>
+   28:                 <button class="call" onTap="callPhone">    立即咨询</button>
+   29              </view>
+   30          </view>
+
+4 matches across 4 files
