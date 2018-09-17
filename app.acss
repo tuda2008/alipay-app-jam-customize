@@ -227,7 +227,6 @@ checkbox, radio{
 
 .call{
   width: 26vw;
-  height: 11vw;
   position: fixed;
   right: 36rpx;
   bottom: 80rpx;
@@ -236,9 +235,24 @@ checkbox, radio{
   padding-left: 40rpx;
   text-align: center;
   text-decoration: none;
+  border: none;
+  border-radius: 20rpx;
   display: inline-block;
   background: url('/images/home/phone.png') left center no-repeat;
   background-size: 48rpx 60rpx;
+  box-shadow: 0 1px #FF0066;
+}
+
+.call:hover{
+  background-color: #FFCCCC;
+  color: #ffffff;
+}
+
+.call:active {
+  background-color: #FFCCCC;
+  color: #ffffff;
+  box-shadow: 0 2px #FF0066;
+  transform: translateY(4px);
 }
 
 .product .menu {

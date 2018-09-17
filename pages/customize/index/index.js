@@ -4,9 +4,9 @@ var app = getApp();
 Page({
     data: {
         carousels: [
+          { 'url': '/images/home/carousel/p3.png' },
           { 'url': '/images/home/carousel/p2.png' },
-          { 'url': '/images/home/carousel/p1.png' },
-          { 'url': '/images/home/carousel/p3.png' }
+          { 'url': '/images/home/carousel/p1.png' }
         ],
         indicatorDots: true,
         vertical: false,
